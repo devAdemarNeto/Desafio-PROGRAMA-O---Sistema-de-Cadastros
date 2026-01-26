@@ -38,7 +38,22 @@ public class PetService {
                     System.out.println("Cidade: ");
                     cidade = scanner.nextLine();
                     if (cidade.isBlank()) cidade = Constantes.NAO_INFORMADO;
-                }else {
+                } else if (contador == 4) {
+                    respostas[contador] = scanner.nextLine();
+
+                    System.out.println("É em anos (A) ou meses (M)?");
+                    String unidade = scanner.nextLine().toUpperCase();
+
+                    double idade = Double.parseDouble(respostas[4]);
+
+                    if (unidade.equals("M")) {
+                        idade = idade / 12;  // converte meses para anos
+                    }
+
+                    Validador.validarIdade(idade);
+
+                    respostas[4] = String.valueOf(idade);  // guarda a idade já convertida
+                } else{
                     respostas[contador] = scanner.nextLine();
                     if (respostas[contador].isBlank()){
                         respostas[contador] = Constantes.NAO_INFORMADO;

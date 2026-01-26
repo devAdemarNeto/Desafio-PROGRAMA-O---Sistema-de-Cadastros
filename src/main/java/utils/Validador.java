@@ -18,4 +18,10 @@ public class Validador {
             throw new CadastroException("Peso deve estar entre 0.5kg e 60kg");
         }
     }
+
+    public static void validarIdade(double idade) {
+        if (idade > 20) {
+            throw new CadastroException("Idade não pode ser maior que 20 anos!");
+        }
+    }
 }
