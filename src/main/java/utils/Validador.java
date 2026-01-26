@@ -12,4 +12,10 @@ public class Validador {
             throw new CadastroException("Nome só pode conter letras!");
         }
     }
+
+    public static void validarPeso(double peso){
+        if (peso > 60 || peso <0.5){
+            throw new CadastroException("Peso deve estar entre 0.5kg e 60kg");
+        }
+    }
 }

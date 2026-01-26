@@ -47,6 +47,11 @@ public class PetService {
                     if(contador == 0){
                         Validador.validarNome(respostas[0]);
                     }
+
+                    if (contador == 5) {
+                        double peso = Double.parseDouble(respostas[5]);
+                        Validador.validarPeso(peso);
+                    }
                 }
                 contador++;
             }
