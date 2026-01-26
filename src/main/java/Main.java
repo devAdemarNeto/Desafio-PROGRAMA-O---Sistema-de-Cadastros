@@ -1,5 +1,9 @@
 package main.java;
 
+import main.java.entities.Pet;
+import main.java.services.ArquivoService;
+import main.java.services.PetService;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,14 +12,14 @@ import java.util.Scanner;
 public class Main {
     static String caminho = "src/resources/formulario.txt";
     public static void main(String[] args) {
-        try(BufferedReader br = new BufferedReader(new FileReader(caminho))){
-            String linha;
-            while ((linha = br.readLine()) != null){
-                System.out.println(linha);
-            }
-        }catch (IOException e){
-            System.out.println("Não fo possivel ler o arquivo" + e.getMessage());;
-        }
+//        try(BufferedReader br = new BufferedReader(new FileReader(caminho))){
+//            String linha;
+//            while ((linha = br.readLine()) != null){
+//                System.out.println(linha);
+//            }
+//        }catch (IOException e){
+//            System.out.println("Não fo possivel ler o arquivo" + e.getMessage());;
+//        }
         exibirMenu();
     }
 
@@ -37,6 +41,7 @@ public class Main {
 
             if (scanner.hasNextInt()){
                 opcao = scanner.nextInt();
+                scanner.nextLine();
 
                 if (opcao <= 0 ){
                     System.out.println("Digite um número maior que zero");
@@ -50,7 +55,13 @@ public class Main {
             switch (opcao){
 
                 case 1:
-                    System.out.println("opção 1 selecionada");
+                    PetService petService = new PetService();
+                    ArquivoService arquivoService = new ArquivoService();
+
+                    Pet pet = petService.lerFormulario(scanner);
+                    arquivoService.salvarPet(pet);
+
+                    System.out.println("Pet cadastrado com Sucesso!");
                     break;
 
                 case 2:
