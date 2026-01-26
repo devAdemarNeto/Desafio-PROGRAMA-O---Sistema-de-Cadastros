@@ -67,6 +67,10 @@ public class PetService {
                         double peso = Double.parseDouble(respostas[5]);
                         Validador.validarPeso(peso);
                     }
+
+                    if (contador == 6){
+                        Validador.validarRaca(respostas[6]);
+                    }
                 }
                 contador++;
             }

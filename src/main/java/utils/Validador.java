@@ -24,4 +24,10 @@ public class Validador {
             throw new CadastroException("Idade não pode ser maior que 20 anos!");
         }
     }
+
+    public static void validarRaca(String raca){
+        if (!raca.matches("^[a-zA-ZÀ-ú\\s]+$")){
+            throw new CadastroException("Raça só pode conter letras");
+        }
+    }
 }
