@@ -5,6 +5,7 @@ import main.java.entities.Pet;
 import main.java.enums.SexoPet;
 import main.java.enums.TipoPet;
 import main.java.utils.Constantes;
+import main.java.utils.Validador;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -42,12 +43,12 @@ public class PetService {
                     if (respostas[contador].isBlank()){
                         respostas[contador] = Constantes.NAO_INFORMADO;
                     }
+
+                    if(contador == 0){
+                        Validador.validarNome(respostas[0]);
+                    }
                 }
-
-
-
                 contador++;
-
             }
 
 
@@ -66,6 +67,9 @@ public class PetService {
                 respostas[6]);
         return pet;
     }
+
+
+
 
 
 }
