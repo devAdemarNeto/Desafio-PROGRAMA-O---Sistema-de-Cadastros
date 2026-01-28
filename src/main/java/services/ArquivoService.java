@@ -4,10 +4,14 @@ import main.java.entities.Pet;
 
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ArquivoService {
 
@@ -39,5 +43,17 @@ public class ArquivoService {
         }catch (IOException e) {
             System.out.println("Erro ao salvar arquivo" + e.getMessage());
         }
+
+    }
+
+    public List<File> listarArquivos(){
+        File pasta = new File("petsCadastrados/");
+        File[] arquivos = pasta.listFiles(); // retorna um array de arquivos
+
+        if (arquivos == null) {
+            return new ArrayList<>(); // lista vazia se a pasta não existe
+        }
+        return Arrays.asList(arquivos); //  converte AARAY para LIST
+
     }
 }
